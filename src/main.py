@@ -1,6 +1,6 @@
-from ast import Dict
-from typing import Literal, MutableMapping
 from fastapi import FastAPI
+
+from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
 
 app = FastAPI()
@@ -34,3 +34,8 @@ async def get_model(name: ModelName):
 @app.get("/files/{file_path:path}")
 async def get_file(file_path: str):
     return {"file_path": file_path }
+
+@app.get("/items/")
+async def read_items(skip: int = 0, limit: int = 0):
+    print('Hi', fake_items_db[skip : skip + limit])
+    return fake_items_db[skip : skip + limit]
