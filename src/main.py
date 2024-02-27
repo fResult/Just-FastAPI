@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
@@ -21,6 +22,24 @@ async def read_user(id: str):
     return {"id": id}
 
 
+@app.get("users/{id}/items/{item_id}")
+async def read_user_item(
+    user_id: str, item_id: str, q: str | None = None, short: bool = False
+):
+    item = {"id": item_id, "owner_id": user_id}
+
+    if q:
+        item.update({"q": q})
+    if not short:
+        item.update(
+            {
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ad accusantium quae nihil vero quas rerum! Tempora, eos exercitationem. Velit animi odit molestiae, architecto dolorem vitae corporis ea porro provident."
+            }
+        )
+
+    return item
+
+
 @app.get("/models/{name}")
 async def get_model(name: ModelName):
     if name is ModelName.alexnet:
@@ -31,11 +50,55 @@ async def get_model(name: ModelName):
 
     return {"name": name, "message": "Have some residual"}
 
+
 @app.get("/files/{file_path:path}")
 async def get_file(file_path: str):
-    return {"file_path": file_path }
+    return {"file_path": file_path}
+
 
 @app.get("/items/")
 async def read_items(skip: int = 0, limit: int = 0):
-    print('Hi', fake_items_db[skip : skip + limit])
-    return fake_items_db[skip : skip + limit]
+    no_limited = limit == 0
+    return fake_items_db[skip : len(fake_items_db) if no_limited else skip + limit]
+
+
+@app.get("/items/{id}")
+async def read_item(id: str, q: str | None = None, short: bool = False):
+    item = {"id": id}
+
+    if q:
+        item.update({"q": q})
+    if not short:
+        item.update(
+            {
+                "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ad accusantium quae nihil vero quas rerum! Tempora, eos exercitationem. Velit animi odit molestiae, architecto dolorem vitae corporis ea porro provident."
+            }
+        )
+
+    return item
+
+
+class Item(BaseModel):
+    name: str
+    description: str | None = None
+    price: float
+    tax: float | None = None
+
+
+class ItemCreationResponse(BaseModel):
+    name: str
+    description: str | None = None
+    price_with_tax: float
+
+
+@app.post("/items/")
+async def create_item(item: Item):
+    item_dict = item.model_dump()
+    print("dict", item_dict)
+
+    if item.tax:
+        item_dict.update({"price_with_tax": item.price + item.tax})
+
+    # print("updated", item_dict)
+
+    return {"created_item": ItemCreationResponse(**item_dict)}
