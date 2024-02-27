@@ -25,16 +25,26 @@ email-validator==2.1.0.post1
     # via fastapi
 fastapi==0.110.0
     # via fastapi
-    # via first-fastapi
+    # via task-mgmt
 h11==0.14.0
     # via httpcore
+    # via hypercorn
     # via uvicorn
+    # via wsproto
+h2==4.1.0
+    # via hypercorn
+hpack==4.0.0
+    # via h2
 httpcore==1.0.4
     # via httpx
 httptools==0.6.1
     # via uvicorn
 httpx==0.27.0
     # via fastapi
+hypercorn==0.16.0
+    # via task-mgmt
+hyperframe==6.0.1
+    # via h2
 idna==3.6
     # via anyio
     # via email-validator
@@ -47,6 +57,8 @@ markupsafe==2.1.5
     # via jinja2
 orjson==3.9.15
     # via fastapi
+priority==2.0.0
+    # via hypercorn
 pydantic==2.6.2
     # via fastapi
     # via pydantic-extra-types
@@ -78,7 +90,6 @@ ujson==5.9.0
     # via fastapi
 uvicorn==0.27.1
     # via fastapi
-    # via first-fastapi
     # via uvicorn
 uvloop==0.19.0
     # via uvicorn
@@ -86,3 +97,5 @@ watchfiles==0.21.0
     # via uvicorn
 websockets==12.0
     # via uvicorn
+wsproto==1.2.0
+    # via hypercorn

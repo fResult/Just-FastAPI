@@ -1,5 +1,5 @@
 [project]
-name = "first-fastapi"
+name = "task-mgmt"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
@@ -7,10 +7,13 @@ authors = [
 ]
 dependencies = [
     "fastapi[all]>=0.110.0",
-    "uvicorn[standard]>=0.27.1",
+    "hypercorn>=0.16.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
+
+# [project.scripts]
+# dev = 'main:app --reload'
 
 [build-system]
 requires = ["hatchling"]
@@ -24,8 +27,4 @@ dev-dependencies = []
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/first_fastapi"]
-
-scripts = [
-    { dev = "uvicorn main:app --reload" }
-]
+packages = ["src/task_mgmt"]

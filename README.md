@@ -9,5 +9,9 @@ rye sync
 
 **Run:**
 ```bash
-rye run uvicorn main:app --reload
+rye run hypercorn src.main:app --reload
 ```
+
+## API Docs
+After running the application...\
+Visit http://localhost:8000/docs
