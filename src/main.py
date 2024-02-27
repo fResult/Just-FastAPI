@@ -1,8 +1,10 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from typing import Dict
 
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
+from src.models.items import Item
+from src.dtos.items import ItemCreationRequest, ItemCreationResponse, ItemCreation
 
 app = FastAPI()
 
@@ -78,27 +80,15 @@ async def read_item(id: str, q: str | None = None, short: bool = False):
     return item
 
 
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-
-
-class ItemCreationResponse(BaseModel):
-    name: str
-    description: str | None = None
-    price_with_tax: float
-
-
 @app.post("/items/")
-async def create_item(item: Item):
+async def create_item(
+    item: ItemCreationRequest,
+) -> ItemCreationResponse:
     item_dict = item.model_dump()
-    print("dict", item_dict)
 
-    if item.tax:
-        item_dict.update({"price_with_tax": item.price + item.tax})
+    price_with_tax = item.price + (item.tax if item.tax else 0)
+    item_dict.update({"id": 1, "price_with_tax": price_with_tax})
 
-    # print("updated", item_dict)
+    print("test", item_dict)
 
-    return {"created_item": ItemCreationResponse(**item_dict)}
+    return {"created_item": ItemCreation(**item_dict)}
