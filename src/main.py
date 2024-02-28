@@ -67,7 +67,11 @@ async def get_file(file_path: str):
 
 @app.get("/items/")
 async def read_items(
-    skip: int = 0, limit: int = 0, q: Annotated[str | None, Query(max_length=50)] = None
+    skip: int = 0,
+    limit: int = 0,
+    q: Annotated[
+        str, Query(min_length=3, max_length=50, pattern="(?i)^select.*from.*;$")
+    ] = "SELECT first_name, last_name FROM persons /* It's just example */;",
 ):
     no_limited = limit == 0
     results = {"items": fake_items_db}
