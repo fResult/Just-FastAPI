@@ -69,14 +69,16 @@ async def get_file(file_path: str):
 async def read_items(
     skip: int = 0,
     limit: int = 0,
-    q: Annotated[
+    item_query: Annotated[
         str,
         Query(
+            alias="item-query",
             title="Query String",
             description="Query string for the items to search in the database that have a good match",
             min_length=3,
             max_length=50,
             pattern="(?i)^select.*from.*;$",
+            deprecated=True,
         ),
     ] = "SELECT first_name, last_name FROM persons /* It's just example */;",
 ):
@@ -91,8 +93,8 @@ async def read_items(
         }
     )
 
-    if q:
-        results.update({"q": q})
+    if item_query:
+        results.update({"q": item_query})
 
     return results
 
