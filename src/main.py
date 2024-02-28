@@ -81,6 +81,7 @@ async def read_items(
             deprecated=True,
         ),
     ] = "SELECT first_name, last_name FROM persons /* It's just example */;",
+    hidden_query: Annotated[str | None, Query(include_in_schema=False, alias="hidden-query")] = None
 ):
     no_limited = limit == 0
     results = {"items": fake_items_db}
@@ -95,6 +96,11 @@ async def read_items(
 
     if item_query:
         results.update({"q": item_query})
+
+    if hidden_query:
+        results.update({"hidden_query": hidden_query})
+    else:
+        results.update({"hidden_query": "Not found"})
 
     return results
 
