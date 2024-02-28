@@ -70,7 +70,14 @@ async def read_items(
     skip: int = 0,
     limit: int = 0,
     q: Annotated[
-        str, Query(min_length=3, max_length=50, pattern="(?i)^select.*from.*;$")
+        str,
+        Query(
+            title="Query String",
+            description="Query string for the items to search in the database that have a good match",
+            min_length=3,
+            max_length=50,
+            pattern="(?i)^select.*from.*;$",
+        ),
     ] = "SELECT first_name, last_name FROM persons /* It's just example */;",
 ):
     no_limited = limit == 0
@@ -91,7 +98,9 @@ async def read_items(
 
 
 @app.get("/items/qs")
-async def read_items_with_queries(q: Annotated[list[str], Query()] = []):
+async def read_items_with_queries(
+    q: Annotated[list[str], Query(title="Query String", min_length=3)] = [],
+):
     query_items = {"q": q}
     return query_items
 
