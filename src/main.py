@@ -90,6 +90,12 @@ async def read_items(
     return results
 
 
+@app.get("/items/qs/")
+async def read_items_with_queries(q: Annotated[list[str] | None, Query()] = None):
+    query_items = {"q": q}
+    return query_items
+
+
 @app.get("/items/{id}")
 async def read_item(id: str, q: str | None = None, short: bool = False):
     item = {"id": id}
