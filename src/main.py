@@ -66,9 +66,22 @@ async def get_file(file_path: str):
 
 
 @app.get("/items/")
-async def read_items(skip: int = 0, limit: int = 0):
+async def read_items(skip: int = 0, limit: int = 0, q: str | None = None):
     no_limited = limit == 0
-    return fake_items_db[skip : len(fake_items_db) if no_limited else skip + limit]
+    results = {"items": fake_items_db}
+
+    results.update(
+        {
+            "items": fake_items_db[
+                skip : len(fake_items_db) if no_limited else skip + limit
+            ],
+        }
+    )
+
+    if q:
+        results.update({"q": q})
+
+    return results
 
 
 @app.get("/items/{id}")
