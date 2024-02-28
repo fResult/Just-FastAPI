@@ -4,7 +4,7 @@ from typing import Dict
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
 from src.models.items import Item
-from src.dtos.items import ItemCreationRequest, ItemCreationResponse, ItemCreation
+from src.dtos.items import ItemCreationRequest, ItemCreationResponse, ItemUpdateResponse, ItemCreation
 
 app = FastAPI()
 
@@ -89,6 +89,14 @@ async def create_item(
     price_with_tax = item.price + (item.tax if item.tax else 0)
     item_dict.update({"id": 1, "price_with_tax": price_with_tax})
 
-    print("test", item_dict)
-
     return {"created_item": ItemCreation(**item_dict)}
+
+
+@app.put("/items/{id}")
+async def update_item(id: int, item: ItemCreationRequest) -> ItemUpdateResponse:
+    item_dict = item.model_dump()
+
+    price_with_tax = item.price + (item.tax if item.tax else 0)
+    item_dict.update({"id": id, "price_with_tax": price_with_tax})
+
+    return {"updated_item": ItemCreation(**item_dict)}

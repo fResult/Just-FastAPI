@@ -17,3 +17,7 @@ class ItemCreation(BaseModel):
 
 class ItemCreationResponse(BaseModel):
     created_item: ItemCreation
+
+
+class ItemUpdateResponse(BaseModel):
+    updated_item: ItemCreation
