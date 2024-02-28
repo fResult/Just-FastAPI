@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import TypeAlias
 
 
 class ItemCreationRequest(BaseModel):
@@ -8,6 +9,10 @@ class ItemCreationRequest(BaseModel):
     tax: float | None = None
 
 
+class ItemUpdateRequest(ItemCreationRequest):
+    pass
+
+
 class ItemCreation(BaseModel):
     id: int
     name: str
@@ -15,9 +20,13 @@ class ItemCreation(BaseModel):
     price_with_tax: float
 
 
+class ItemUpdate(ItemCreation):
+    pass
+
+
 class ItemCreationResponse(BaseModel):
     created_item: ItemCreation
 
 
 class ItemUpdateResponse(BaseModel):
-    updated_item: ItemCreation
+    updated_item: ItemUpdate
