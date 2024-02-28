@@ -100,10 +100,15 @@ async def create_item(
 
 
 @app.put("/items/{id}")
-async def update_item(id: int, item: ItemUpdateRequest) -> ItemUpdateResponse:
+async def update_item(
+    id: int, item: ItemUpdateRequest, q: str | None = None
+) -> ItemUpdateResponse:
     item_dict = item.model_dump()
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
     item_dict.update({"id": id, "price_with_tax": price_with_tax})
+
+    if q:
+        item_dict = {"q": q, **item_dict}
 
     return {"updated_item": ItemUpdate(**item_dict)}

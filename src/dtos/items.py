@@ -21,6 +21,7 @@ class ItemCreation(BaseModel):
 
 
 class ItemUpdate(ItemCreation):
+    q: str | None = None
     pass
 
 
