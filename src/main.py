@@ -1,5 +1,5 @@
-from fastapi import FastAPI
-from typing import Dict
+from fastapi import FastAPI, Query
+from typing import Annotated
 
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
@@ -66,7 +66,9 @@ async def get_file(file_path: str):
 
 
 @app.get("/items/")
-async def read_items(skip: int = 0, limit: int = 0, q: str | None = None):
+async def read_items(
+    skip: int = 0, limit: int = 0, q: Annotated[str | None, Query(max_length=50)] = None
+):
     no_limited = limit == 0
     results = {"items": fake_items_db}
 
