@@ -117,7 +117,7 @@ async def read_items_with_queries(
 
 @app.get("/items/{id}")
 async def read_item(
-    id: Annotated[str, Path(title="ID for the item to get")],
+    id: Annotated[str, Path(title="ID for the item to get", min_length=1)],
     q: Annotated[str | None, Query(alias="item-query")] = None,
     short: bool = False,
 ):
