@@ -117,7 +117,7 @@ async def read_items_with_queries(
 
 @app.get("/items/{id}")
 async def read_item(
-    id: Annotated[str, Path(title="ID for the item to get", min_length=1)],
+    id: Annotated[int, Path(title="ID for the item to get", ge=1, lt=1000)],
     q: Annotated[str | None, Query(alias="item-query")] = None,
     short: bool = False,
 ):
@@ -149,8 +149,12 @@ async def create_item(
 
 @app.put("/items/{id}")
 async def update_item(
-    id: int, item: ItemUpdateRequest, q: str | None = None
+    id: int, item: ItemUpdateRequest | None = None, q: str | None = None
 ) -> ItemUpdateResponse:
+    print(not item)
+    if not item:
+        return { "updated_item": None }
+
     item_dict = item.model_dump()
 
     price_with_tax = item.price + (item.tax if item.tax else 0)

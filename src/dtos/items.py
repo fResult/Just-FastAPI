@@ -30,4 +30,4 @@ class ItemCreationResponse(BaseModel):
 
 
 class ItemUpdateResponse(BaseModel):
-    updated_item: ItemUpdate
+    updated_item: ItemUpdate | None
