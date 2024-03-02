@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Path
+from fastapi import FastAPI, Query, Path, Body
 from typing import Annotated
 
 from src.db.fake_db import fake_items_db
@@ -149,11 +149,14 @@ async def create_item(
 
 @app.put("/items/{id}")
 async def update_item(
-    id: int, item: ItemUpdateRequest | None = None, q: str | None = None
+    id: int,
+    item: ItemUpdateRequest | None = None,
+    q: str | None = None,
+    importance: Annotated[int, Body()] = 5,
 ) -> ItemUpdateResponse:
-    print(not item)
+    print(not item, importance)
     if not item:
-        return { "updated_item": None }
+        return {"updated_item": None}
 
     item_dict = item.model_dump()
 
