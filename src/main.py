@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Path
 from typing import Annotated
 
 from src.db.fake_db import fake_items_db
@@ -81,7 +81,9 @@ async def read_items(
             deprecated=True,
         ),
     ] = "SELECT first_name, last_name FROM persons /* It's just example */;",
-    hidden_query: Annotated[str | None, Query(include_in_schema=False, alias="hidden-query")] = None
+    hidden_query: Annotated[
+        str | None, Query(include_in_schema=False, alias="hidden-query")
+    ] = None,
 ):
     no_limited = limit == 0
     results = {"items": fake_items_db}
@@ -114,7 +116,11 @@ async def read_items_with_queries(
 
 
 @app.get("/items/{id}")
-async def read_item(id: str, q: str | None = None, short: bool = False):
+async def read_item(
+    id: Annotated[str, Path(title="ID for the item to get")],
+    q: Annotated[str | None, Query(alias="item-query")] = None,
+    short: bool = False,
+):
     item = {"id": id}
 
     if q:
