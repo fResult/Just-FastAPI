@@ -1,4 +1,5 @@
 from pydantic import BaseModel, Field
+from src.dtos.images import Image
 
 
 class ItemCreationRequest(BaseModel):
@@ -7,6 +8,7 @@ class ItemCreationRequest(BaseModel):
     price: float = Field(gt=0, description="The price must be greater than zero")
     tax: float | None = None
     tags: set[str] = set()
+    image: Image | None = None
 
 
 class ItemUpdateRequest(ItemCreationRequest):
@@ -19,6 +21,7 @@ class ItemCreation(BaseModel):
     description: str | None = None
     price_with_tax: float
     tags: set[str] = set()
+    image: Image | None = None
 
 
 class ItemUpdate(ItemCreation):
