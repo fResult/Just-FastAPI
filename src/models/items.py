@@ -8,4 +8,4 @@ class Item(BaseModel):
     description: str | None = None
     price: float
     tax: float | None = None
-    image: Image | None = None
+    images: list[Image] | None = None
