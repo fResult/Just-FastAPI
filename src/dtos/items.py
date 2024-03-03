@@ -1,11 +1,10 @@
-from pydantic import BaseModel
-from typing import TypeAlias
+from pydantic import BaseModel, Field
 
 
 class ItemCreationRequest(BaseModel):
     name: str
-    description: str | None = None
-    price: float
+    description: str | None = Field(default=None, max_length=300)
+    price: float = Field(gt=0, description="The price must be greater than zero")
     tax: float | None = None
 
 

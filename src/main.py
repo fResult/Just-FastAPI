@@ -152,9 +152,7 @@ async def update_item(
     id: int,
     item: ItemUpdateRequest | None = None,
     q: str | None = None,
-    importance: Annotated[int, Body()] = 5,
 ) -> ItemUpdateResponse:
-    print(not item, importance)
     if not item:
         return {"updated_item": None}
 
