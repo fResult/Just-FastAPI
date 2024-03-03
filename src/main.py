@@ -157,6 +157,7 @@ async def update_item(
         return {"updated_item": None}
 
     item_dict = item.model_dump()
+    print(item_dict)
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
     item_dict.update({"id": id, "price_with_tax": price_with_tax})

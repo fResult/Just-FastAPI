@@ -6,6 +6,7 @@ class ItemCreationRequest(BaseModel):
     description: str | None = Field(default=None, max_length=300)
     price: float = Field(gt=0, description="The price must be greater than zero")
     tax: float | None = None
+    tags: set[str] = set()
 
 
 class ItemUpdateRequest(ItemCreationRequest):
@@ -17,6 +18,7 @@ class ItemCreation(BaseModel):
     name: str
     description: str | None = None
     price_with_tax: float
+    tags: set[str] = set()
 
 
 class ItemUpdate(ItemCreation):
