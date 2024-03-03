@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from src.models.images import Image
 
 
 class Item(BaseModel):
@@ -7,3 +8,4 @@ class Item(BaseModel):
     description: str | None = None
     price: float
     tax: float | None = None
+    image: Image | None = None

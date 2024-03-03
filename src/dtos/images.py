@@ -1,6 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 
 
 class Image(BaseModel):
     name: str
-    url: str
+    url: HttpUrl
