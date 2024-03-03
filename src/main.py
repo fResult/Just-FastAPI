@@ -3,7 +3,6 @@ from typing import Annotated
 
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
-from src.models.items import Item
 from src.dtos.items import (
     ItemCreationRequest,
     ItemUpdateRequest,
@@ -12,6 +11,7 @@ from src.dtos.items import (
     ItemCreation,
     ItemUpdate,
 )
+from src.dtos.offers import OfferCreationRequest, OfferCreationResponse, OfferCreation
 
 app = FastAPI()
 
@@ -157,7 +157,6 @@ async def update_item(
         return {"updated_item": None}
 
     item_dict = item.model_dump()
-    print(item_dict)
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
     item_dict.update({"id": id, "price_with_tax": price_with_tax})
@@ -166,3 +165,12 @@ async def update_item(
         item_dict = {"q": q, **item_dict}
 
     return {"updated_item": ItemUpdate(**item_dict)}
+
+
+@app.post("/offers/")
+async def create_offer(offer: OfferCreationRequest) -> OfferCreationResponse:
+    offer_dict = offer.model_dump()
+
+    offer_dict.update({"id": 12})
+
+    return {"created_offer": OfferCreation(**offer_dict)}
