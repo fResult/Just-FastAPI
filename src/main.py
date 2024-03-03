@@ -179,4 +179,5 @@ async def create_offer(offer: OfferCreationRequest) -> OfferCreationResponse:
 
 @app.post("/images/multiple/")
 async def create_multiple_images(images: list[ImageCreationRequest]):
+    print([img.model_dump() for img in images])
     return images

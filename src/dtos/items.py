@@ -10,6 +10,22 @@ class ItemCreationRequest(BaseModel):
     tags: set[str] = set()
     images: list[Image] | None = None
 
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "name": "Foo",
+                "description": "Here is your description!",
+                "price": 99.99,
+                "tax": 8.8,
+                "tags": ["Korn", "Zilla"],
+                "images": [
+                    {"name": "img-1", "url": "https://example.com/"},
+                    {"name": "img-2", "url": "https://example.com/"},
+                ],
+            }
+        }
+    }
+
 
 class ItemUpdateRequest(ItemCreationRequest):
     pass
