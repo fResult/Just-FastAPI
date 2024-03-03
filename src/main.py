@@ -12,6 +12,7 @@ from src.dtos.items import (
     ItemUpdate,
 )
 from src.dtos.offers import OfferCreationRequest, OfferCreationResponse, OfferCreation
+from src.dtos.images import ImageCreationRequest
 
 app = FastAPI()
 
@@ -174,3 +175,8 @@ async def create_offer(offer: OfferCreationRequest) -> OfferCreationResponse:
     offer_dict.update({"id": 12})
 
     return {"created_offer": OfferCreation(**offer_dict)}
+
+
+@app.post("/images/multiple/")
+async def create_multiple_images(images: list[ImageCreationRequest]):
+    return images

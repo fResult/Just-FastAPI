@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from src.dtos.images import Image
+from src.models.images import Image
 
 
 class ItemCreationRequest(BaseModel):
