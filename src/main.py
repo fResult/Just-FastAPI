@@ -154,20 +154,40 @@ async def update_item(
     item: Annotated[
         ItemUpdateRequest | None,
         Body(
-            examples=[
-                {
-                    "name": "Bar",
-                    "description": "A very nice item",
-                    "price": 35.4,
-                    "tax": 3.2,
-                    "tags": ["Bar", "Zilla"],
-                    "images": [
-                        {"name": "img-1", "url": "https://example.com/"},
-                        {"name": "img-2", "url": "https://example.com/"},
-                    ],
+            openapi_examples={
+                "normal": {
+                    "summary": "A normal example",
+                    "description": "A **normal** item works correctly.",
+                    "value": {
+                        "name": "Bar",
+                        "description": "A very nice item",
+                        "price": 35.4,
+                        "tax": 3.2,
+                        "tags": ["Bar", "Zilla"],
+                        "images": [
+                            {"name": "img-1", "url": "https://example.com/"},
+                            {"name": "img-2", "url": "https://example.com/"},
+                        ],
+                    },
                 },
-                {"name": "Baz", "price": 35.4, "tax": set()},
-            ]
+                "converted": {
+                    "summary": "An example with converted data",
+                    "description": "FastAPI can convert price `strings` to actual `numbers` automatically",
+                    "value": {
+                        "name": "Baz",
+                        "price": "35.4",
+                        "tags": [],
+                    },
+                },
+                "invalid": {
+                    "summary": "Invalid data is rejected with an error",
+                    "value": {
+                        "name": "Baz",
+                        "price": "thirty five point four",
+                        "tags": [],
+                    },
+                },
+            }
         ),
     ] = None,
     q: str | None = None,
