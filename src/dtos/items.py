@@ -1,6 +1,8 @@
-from pydantic import BaseModel, Field
-from src.models.images import Image
 from uuid import UUID
+
+from pydantic import BaseModel, Field
+
+from src.models.images import Image
 
 
 class ItemCreationRequest(BaseModel):
