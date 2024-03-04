@@ -151,7 +151,25 @@ async def create_item(
 @app.put("/items/{id}")
 async def update_item(
     id: int,
-    item: ItemUpdateRequest | None = None,
+    item: Annotated[
+        ItemUpdateRequest | None,
+        Body(
+            examples=[
+                {
+                    "name": "Bar",
+                    "description": "A very nice item",
+                    "price": 35.4,
+                    "tax": 3.2,
+                    "tags": ["Bar", "Zilla"],
+                    "images": [
+                        {"name": "img-1", "url": "https://example.com/"},
+                        {"name": "img-2", "url": "https://example.com/"},
+                    ],
+                },
+                {"name": "Baz", "price": 35.4, "tax": set()},
+            ]
+        ),
+    ] = None,
     q: str | None = None,
 ) -> ItemUpdateResponse:
     if not item:

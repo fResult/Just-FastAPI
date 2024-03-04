@@ -26,6 +26,7 @@ class ItemCreationRequest(BaseModel):
         ],
     )
 
+
 class ItemUpdateRequest(ItemCreationRequest):
     pass
 
