@@ -1,7 +1,7 @@
 from typing import Annotated
 from uuid import UUID
 
-from fastapi import Body, Cookie, FastAPI, Path, Query
+from fastapi import Body, Cookie, FastAPI, Path, Query, Header
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -240,3 +240,8 @@ async def create_offer(offer: OfferCreationRequest) -> OfferCreationResponse:
 async def create_multiple_images(images: list[ImageCreationRequest]):
     print([img.model_dump() for img in images])
     return images
+
+
+@app.get("/headers/")
+async def read_headers(user_agent: Annotated[str | None, Header()] = None):
+    return {"user-agent": user_agent}
