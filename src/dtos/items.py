@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field
 from src.models.images import Image
+from uuid import UUID
 
 
 class ItemCreationRequest(BaseModel):
@@ -32,7 +33,7 @@ class ItemUpdateRequest(ItemCreationRequest):
 
 
 class ItemCreation(BaseModel):
-    id: int
+    id: UUID
     name: str
     description: str | None = None
     price_with_tax: float

@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Query, Path, Body
 from typing import Annotated
+from uuid import UUID
 
 from src.db.fake_db import fake_items_db
 from src.models.model_name import ModelName
@@ -150,7 +151,7 @@ async def create_item(
 
 @app.put("/items/{id}")
 async def update_item(
-    id: int,
+    id: UUID,
     item: Annotated[
         ItemUpdateRequest | None,
         Body(

@@ -1,9 +1,10 @@
 from pydantic import BaseModel
 from src.models.images import Image
+from uuid import UUID
 
 
 class Item(BaseModel):
-    id: int
+    id: UUID
     name: str
     description: str | None = None
     price: float
