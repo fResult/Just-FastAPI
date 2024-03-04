@@ -3,29 +3,28 @@ from src.models.images import Image
 
 
 class ItemCreationRequest(BaseModel):
-    name: str
-    description: str | None = Field(default=None, max_length=300)
-    price: float = Field(gt=0, description="The price must be greater than zero")
-    tax: float | None = None
-    tags: set[str] = set()
-    images: list[Image] | None = None
-
-    model_config = {
-        "json_schema_extra": {
-            "example": {
-                "name": "Foo",
-                "description": "Here is your description!",
-                "price": 99.99,
-                "tax": 8.8,
-                "tags": ["Korn", "Zilla"],
-                "images": [
-                    {"name": "img-1", "url": "https://example.com/"},
-                    {"name": "img-2", "url": "https://example.com/"},
-                ],
-            }
-        }
-    }
-
+    name: str = Field(examples=["Foo"])
+    description: str | None = Field(
+        default=None,
+        max_length=300,
+        examples=["A very nice item"],
+    )
+    price: float = Field(
+        gt=0,
+        description="The price must be greater than zero",
+        examples=[35.4],
+    )
+    tax: float | None = Field(default=None, examples=[3.2])
+    tags: set[str] = Field(default=set(), examples=[["Foo", "Zilla"]])
+    images: list[Image] | None = Field(
+        default=None,
+        examples=[
+            [
+                {"name": "img-1", "url": "https://example.com/"},
+                {"name": "img-2", "url": "https://example.com/"},
+            ]
+        ],
+    )
 
 class ItemUpdateRequest(ItemCreationRequest):
     pass
