@@ -70,6 +70,7 @@ async def get_file(file_path: str):
 
 @app.get("/items/")
 async def read_items(
+    ads_id: Annotated[str | None, Cookie()] = None,
     skip: int = 0,
     limit: int = 0,
     item_query: Annotated[
@@ -90,6 +91,8 @@ async def read_items(
 ):
     no_limited = limit == 0
     results = {"items": fake_items_db}
+
+    print("cookie", ads_id)
 
     results.update(
         {
@@ -120,7 +123,23 @@ async def read_items_with_queries(
 
 @app.get("/items/{id}")
 async def read_item(
-    id: Annotated[int, Path(title="ID for the item to get", ge=1, lt=1000)],
+    id: Annotated[
+        UUID,
+        Path(
+            title="ID for the item to get",
+            example="018e0aa8-48a9-7ae4-9746-1dc89c3f70cd",
+            openapi_examples={
+                "normal": {
+                    "summary": "Normal UUID",
+                    "value": "018e0aa8-48a9-7ae4-9746-1dc89c3f70cd",
+                },
+                "invalid": {
+                    "summary": "Invalid UUID",
+                    "value": "wrong-uuid",
+                },
+            },
+        ),
+    ],
     q: Annotated[str | None, Query(alias="item-query")] = None,
     short: bool = False,
 ):
