@@ -8,14 +8,15 @@ from fastapi import (
     File,
     Form,
     Header,
+    HTTPException,
     Path,
     Query,
+    Request,
     Response,
     UploadFile,
     status,
-    HTTPException,
 )
-from fastapi.responses import RedirectResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -29,6 +30,7 @@ from src.dtos.items import (
 )
 from src.dtos.offers import OfferCreation, OfferCreationRequest, OfferCreationResponse
 from src.dtos.users import UserCreation, UserCreationRequest, UserCreationResponse
+from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
 from src.services.users_service import fake_save_user
 
@@ -166,7 +168,7 @@ async def read_item(
                 },
                 "not-found": {
                     "summary": "Not found UUID",
-                    "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                    "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
                 },
                 "invalid": {
                     "summary": "Invalid UUID",
@@ -179,7 +181,11 @@ async def read_item(
     short: bool = False,
 ):
     if id == UUID("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"):
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item not found")
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Item not found",
+            headers={"X-Error": "There goes my error"},
+        )
 
     item = {"id": id}
 
@@ -339,3 +345,21 @@ async def create_upload_file(
         return {"message": "No upload file sent"}
 
     return {"file_name": file.filename}
+
+
+@app.exception_handler(UnicornException)
+async def unicorn_exception_handler(request: Request, exception: UnicornException):
+    return JSONResponse(
+        status_code=status.HTTP_410_GONE,
+        content={
+            "message": f"Oops! {exception.name} did something. There goes a rainbow..."
+        },
+    )
+
+
+@app.get("/unicorns/{name}")
+async def read_unicorn(name: str):
+    if name == "yolo":
+        raise UnicornException(name)
+
+    return {"unicorn_name": name}
