@@ -310,11 +310,17 @@ async def get_portal(teleport: bool = False) -> Response | dict:
 @app.post("/files/")
 async def create_file(
     file: Annotated[bytes, File(description="A file read as bytes")],
+    file_b: Annotated[UploadFile, File(description="A file read as upload file")],
+    token: Annotated[str, Form()],
 ):
     if not file:
         return {"message": "No file sent"}
 
-    return {"file_size": len(file)}
+    return {
+        "file_size": len(file),
+        "token": token,
+        "file_content_type": file_b.content_type,
+    }
 
 
 @app.post("/upload-file/")
