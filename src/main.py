@@ -375,7 +375,9 @@ async def unicorn_exception_handler(request: Request, exception: UnicornExceptio
 
 @app.exception_handler(StarletteHTTPException)
 async def http_exception_handler(request: Request, exception: HTTPException):
-    print("type", exception)
+    print(f"OMG! An HTTP error!: {repr(exception)}")
+
+    # return await http_exception_handler(request, exception)
     return PlainTextResponse(str(exception.detail), status_code=exception.status_code)
 
 
@@ -384,6 +386,9 @@ async def validation_exception_handler(
     request: Request,
     exception: RequestValidationError,
 ):
+    print(f"OMG! The client sent invalid data!: {exception}")
+
+    # return await request_validation_exception_handler(request, exception)
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content=jsonable_encoder(
