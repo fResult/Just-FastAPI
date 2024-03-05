@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import Body, Cookie, FastAPI, Path, Query, Header
@@ -92,8 +92,6 @@ async def read_items(
     no_limited = limit == 0
     results = {"items": fake_items_db}
 
-    print("cookie", ads_id)
-
     results.update(
         {
             "items": fake_items_db[
@@ -157,21 +155,37 @@ async def read_item(
     return item
 
 
-@app.post("/items/")
+@app.post("/items/", response_model=ItemCreationResponse)
 async def create_item(
     item: ItemCreationRequest,
-) -> ItemCreationResponse:
+):
     item_dict = item.model_dump()
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
-    item_dict.update({"id": 1, "price_with_tax": price_with_tax})
+    item_dict.update(
+        {"id": "018e0d29-45c9-7456-9827-f324fd0d65dc", "price_with_tax": price_with_tax}
+    )
 
     return {"created_item": ItemCreation(**item_dict)}
 
 
-@app.put("/items/{id}")
+@app.put("/items/{id}", response_model=ItemUpdateResponse)
 async def update_item(
-    id: UUID,
+    id: Annotated[
+        UUID,
+        Path(
+            openapi_examples={
+                "normal": {
+                    "summary": "Normal UUID",
+                    "value": "018e0d2b-a90d-7d49-bb22-c9313f756920",
+                },
+                "invalid": {
+                    "summary": "Invalid UUID",
+                    "value": "wrong-uuid",
+                },
+            }
+        ),
+    ],
     item: Annotated[
         ItemUpdateRequest | None,
         Body(
@@ -212,7 +226,7 @@ async def update_item(
         ),
     ] = None,
     q: str | None = None,
-) -> ItemUpdateResponse:
+):
     if not item:
         return {"updated_item": None}
 
@@ -227,8 +241,8 @@ async def update_item(
     return {"updated_item": ItemUpdate(**item_dict)}
 
 
-@app.post("/offers/")
-async def create_offer(offer: OfferCreationRequest) -> OfferCreationResponse:
+@app.post("/offers/", response_model=OfferCreationResponse)
+async def create_offer(offer: OfferCreationRequest):
     offer_dict = offer.model_dump()
 
     offer_dict.update({"id": 12})
