@@ -4,6 +4,7 @@
     "dtos",
     "fastapi",
     "hypercorn",
+    "jsonable",
     "pydantic",
     "Starlette",
     "uvicorn"

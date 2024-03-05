@@ -16,8 +16,9 @@ from fastapi import (
     UploadFile,
     status,
 )
+from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, RedirectResponse, PlainTextResponse
+from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from src.db.fake_db import fake_items_db
@@ -355,7 +356,8 @@ async def read_unicorn(name: Annotated[str, Path(min_length=3)]):
         raise UnicornException(name)
     if name == "haha":
         raise HTTPException(
-            status_code=status.HTTP_418_IM_A_TEAPOT, detail=f"Nope! I don't like [{name}]"
+            status_code=status.HTTP_418_IM_A_TEAPOT,
+            detail=f"Nope! I don't like [{name}]",
         )
 
     return {"unicorn_name": name}
@@ -378,5 +380,13 @@ async def http_exception_handler(request: Request, exception: HTTPException):
 
 
 @app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exception: HTTPException):
-    return PlainTextResponse(str(exception), status_code=status.HTTP_400_BAD_REQUEST)
+async def validation_exception_handler(
+    request: Request,
+    exception: RequestValidationError,
+):
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content=jsonable_encoder(
+            {"detail": exception.errors(), "body": exception.body}
+        ),
+    )
