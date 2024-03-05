@@ -13,8 +13,9 @@ from fastapi import (
     Response,
     UploadFile,
     status,
+    HTTPException,
 )
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -163,6 +164,10 @@ async def read_item(
                     "summary": "Normal UUID",
                     "value": "018e0aa8-48a9-7ae4-9746-1dc89c3f70cd",
                 },
+                "not-found": {
+                    "summary": "Not found UUID",
+                    "value": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"
+                },
                 "invalid": {
                     "summary": "Invalid UUID",
                     "value": "wrong-uuid",
@@ -173,6 +178,9 @@ async def read_item(
     q: Annotated[str | None, Query(alias="item-query")] = None,
     short: bool = False,
 ):
+    if id == UUID("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa"):
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item not found")
+
     item = {"id": id}
 
     if q:
