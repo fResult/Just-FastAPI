@@ -16,7 +16,9 @@ from fastapi import (
     UploadFile,
     status,
 )
-from fastapi.responses import JSONResponse, RedirectResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse, RedirectResponse, PlainTextResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -347,19 +349,34 @@ async def create_upload_file(
     return {"file_name": file.filename}
 
 
+@app.get("/unicorns/{name}")
+async def read_unicorn(name: Annotated[str, Path(min_length=3)]):
+    if name == "yolo":
+        raise UnicornException(name)
+    if name == "haha":
+        raise HTTPException(
+            status_code=status.HTTP_418_IM_A_TEAPOT, detail=f"Nope! I don't like [{name}]"
+        )
+
+    return {"unicorn_name": name}
+
+
 @app.exception_handler(UnicornException)
 async def unicorn_exception_handler(request: Request, exception: UnicornException):
     return JSONResponse(
-        status_code=status.HTTP_410_GONE,
+        status_code=status.HTTP_418_IM_A_TEAPOT,
         content={
             "message": f"Oops! {exception.name} did something. There goes a rainbow..."
         },
     )
 
 
-@app.get("/unicorns/{name}")
-async def read_unicorn(name: str):
-    if name == "yolo":
-        raise UnicornException(name)
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request: Request, exception: HTTPException):
+    print("type", exception)
+    return PlainTextResponse(str(exception.detail), status_code=exception.status_code)
 
-    return {"unicorn_name": name}
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exception: HTTPException):
+    return PlainTextResponse(str(exception), status_code=status.HTTP_400_BAD_REQUEST)
