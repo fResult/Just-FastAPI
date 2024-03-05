@@ -8,6 +8,9 @@ authors = [
 dependencies = [
     "fastapi[all]>=0.110.0",
     "hypercorn>=0.16.0",
+    "email-validator>=2.1.1",
+    "pydantic[email]>=2.6.3",
+    "python-multipart>=0.0.9",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

@@ -1,7 +1,20 @@
-from typing import Annotated, Any
+from typing import Annotated
 from uuid import UUID
 
-from fastapi import Body, Cookie, FastAPI, Path, Query, Header
+from fastapi import (
+    Body,
+    Cookie,
+    FastAPI,
+    File,
+    Form,
+    Header,
+    Path,
+    Query,
+    Response,
+    UploadFile,
+    status,
+)
+from fastapi.responses import RedirectResponse, HTMLResponse
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -14,7 +27,9 @@ from src.dtos.items import (
     ItemUpdateResponse,
 )
 from src.dtos.offers import OfferCreation, OfferCreationRequest, OfferCreationResponse
+from src.dtos.users import UserCreation, UserCreationRequest, UserCreationResponse
 from src.models.model_name import ModelName
+from src.services.users_service import fake_save_user
 
 app = FastAPI()
 
@@ -34,7 +49,24 @@ async def read_user(id: str):
     return {"id": id}
 
 
-@app.get("users/{id}/items/{item_id}")
+@app.post(
+    "/users/", response_model=UserCreationResponse, status_code=status.HTTP_201_CREATED
+)
+async def create_user(user: UserCreationRequest) -> UserCreationResponse:
+    created_user = fake_save_user(user).model_dump()
+
+    return UserCreationResponse(created_user=UserCreation(**created_user))
+
+
+@app.post("/login/")
+async def login(username: Annotated[str, Form()], password: Annotated[str, Form()]):
+    if username == "username" and password == "password":
+        return {"username": username}
+
+    return {"error_message": "Username or Password is invalid!"}
+
+
+@app.get("users/{user_id}/items/{item_id}")
 async def read_user_item(
     user_id: str, item_id: str, q: str | None = None, short: bool = False
 ):
@@ -155,7 +187,9 @@ async def read_item(
     return item
 
 
-@app.post("/items/", response_model=ItemCreationResponse)
+@app.post(
+    "/items/", response_model=ItemCreationResponse, status_code=status.HTTP_201_CREATED
+)
 async def create_item(
     item: ItemCreationRequest,
 ):
@@ -241,7 +275,11 @@ async def update_item(
     return {"updated_item": ItemUpdate(**item_dict)}
 
 
-@app.post("/offers/", response_model=OfferCreationResponse)
+@app.post(
+    "/offers/",
+    response_model=OfferCreationResponse,
+    status_code=status.HTTP_201_CREATED,
+)
 async def create_offer(offer: OfferCreationRequest):
     offer_dict = offer.model_dump()
 
@@ -250,7 +288,7 @@ async def create_offer(offer: OfferCreationRequest):
     return {"created_offer": OfferCreation(**offer_dict)}
 
 
-@app.post("/images/multiple/")
+@app.post("/images/multiple/", status_code=status.HTTP_201_CREATED)
 async def create_multiple_images(images: list[ImageCreationRequest]):
     print([img.model_dump() for img in images])
     return images
@@ -259,3 +297,31 @@ async def create_multiple_images(images: list[ImageCreationRequest]):
 @app.get("/headers/")
 async def read_headers(user_agent: Annotated[str | None, Header()] = None):
     return {"user-agent": user_agent}
+
+
+@app.get("/portal", response_model=None)
+async def get_portal(teleport: bool = False) -> Response | dict:
+    if teleport:
+        return RedirectResponse(url="https://youtu.be/dQw4w9WgXcQ")
+
+    return {"message": "Here's your inter dimensional portal."}
+
+
+@app.post("/files/")
+async def create_file(
+    file: Annotated[bytes, File(description="A file read as bytes")],
+):
+    if not file:
+        return {"message": "No file sent"}
+
+    return {"file_size": len(file)}
+
+
+@app.post("/upload-file/")
+async def create_upload_file(
+    file: Annotated[UploadFile, File(description="A file read as upload file")],
+):
+    if not file:
+        return {"message": "No upload file sent"}
+
+    return {"file_name": file.filename}
