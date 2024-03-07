@@ -35,6 +35,7 @@ from src.dtos.offers import OfferCreation, OfferCreationRequest, OfferCreationRe
 from src.dtos.users import UserCreation, UserCreationRequest, UserCreationResponse
 from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
+from src.open_api.tags import Tags
 from src.services.users_service import fake_save_user
 
 app = FastAPI()
@@ -45,18 +46,21 @@ async def root():
     return {"message": "Hello World!"}
 
 
-@app.get("/users/me")
+@app.get("/users/me", tags=[Tags.users])
 async def read_my_user():
     return {"id": "current user"}
 
 
-@app.get("/users/{id}")
+@app.get("/users/{id}", tags=[Tags.users])
 async def read_user(id: str):
     return {"id": id}
 
 
 @app.post(
-    "/users/", response_model=UserCreationResponse, status_code=status.HTTP_201_CREATED
+    "/users/",
+    response_model=UserCreationResponse,
+    status_code=status.HTTP_201_CREATED,
+    tags=[Tags.users],
 )
 async def create_user(user: UserCreationRequest) -> UserCreationResponse:
     created_user = fake_save_user(user).model_dump()
@@ -64,7 +68,7 @@ async def create_user(user: UserCreationRequest) -> UserCreationResponse:
     return UserCreationResponse(created_user=UserCreation(**created_user))
 
 
-@app.post("/login/")
+@app.post("/login/", tags=[Tags.authentications, Tags.users])
 async def login(username: Annotated[str, Form()], password: Annotated[str, Form()]):
     if username == "username" and password == "password":
         return {"username": username}
@@ -72,7 +76,7 @@ async def login(username: Annotated[str, Form()], password: Annotated[str, Form(
     return {"error_message": "Username or Password is invalid!"}
 
 
-@app.get("users/{user_id}/items/{item_id}")
+@app.get("users/{user_id}/items/{item_id}", tags=[Tags.users])
 async def read_user_item(
     user_id: str, item_id: str, q: str | None = None, short: bool = False
 ):
@@ -101,12 +105,12 @@ async def get_model(name: ModelName):
     return {"name": name, "message": "Have some residual"}
 
 
-@app.get("/files/{file_path:path}")
+@app.get("/files/{file_path:path}", tags=[Tags.files])
 async def get_file(file_path: str):
     return {"file_path": file_path}
 
 
-@app.get("/items/")
+@app.get("/items/", tags=[Tags.items])
 async def read_items(
     ads_id: Annotated[str | None, Cookie()] = None,
     skip: int = 0,
@@ -149,7 +153,7 @@ async def read_items(
     return results
 
 
-@app.get("/items/qs")
+@app.get("/items/qs", tags=[Tags.items])
 async def read_items_with_queries(
     q: Annotated[list[str], Query(title="Query String", min_length=3)] = [],
 ):
@@ -157,7 +161,7 @@ async def read_items_with_queries(
     return query_items
 
 
-@app.get("/items/{id}")
+@app.get("/items/{id}", tags=[Tags.items])
 async def read_item(
     id: Annotated[
         UUID,
@@ -205,11 +209,27 @@ async def read_item(
 
 
 @app.post(
-    "/items/", response_model=ItemCreationResponse, status_code=status.HTTP_201_CREATED
+    "/items/",
+    response_model=ItemCreationResponse,
+    status_code=status.HTTP_201_CREATED,
+    tags=[Tags.items],
+    summary="Create an item",
+    # description="Create an item with all the information, name, description, price, tax, images, and a set of unique tags",
+    response_description="The created item",
 )
 async def create_item(
     item: ItemCreationRequest,
 ):
+    """
+    Create an item with all the information:
+
+    - **name**: each item must have a name
+    - **description**: a long description
+    - **price**: required
+    - **tax**: if the item doesn't have tax, you can omit this
+    - **images**: list of image, you can omit this
+    - **tags**: a set of unique tag strings for this item
+    """
     item_dict = item.model_dump()
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
@@ -220,7 +240,7 @@ async def create_item(
     return {"created_item": ItemCreation(**item_dict)}
 
 
-@app.put("/items/{id}", response_model=ItemUpdateResponse)
+@app.put("/items/{id}", response_model=ItemUpdateResponse, tags=[Tags.items])
 async def update_item(
     id: Annotated[
         UUID,
@@ -296,6 +316,7 @@ async def update_item(
     "/offers/",
     response_model=OfferCreationResponse,
     status_code=status.HTTP_201_CREATED,
+    tags=[Tags.offers],
 )
 async def create_offer(offer: OfferCreationRequest):
     offer_dict = offer.model_dump()
@@ -305,7 +326,10 @@ async def create_offer(offer: OfferCreationRequest):
     return {"created_offer": OfferCreation(**offer_dict)}
 
 
-@app.post("/images/multiple/", status_code=status.HTTP_201_CREATED)
+@app.post(
+    "/images/multiple/",
+    status_code=status.HTTP_201_CREATED,
+)
 async def create_multiple_images(images: list[ImageCreationRequest]):
     print([img.model_dump() for img in images])
     return images
@@ -324,7 +348,7 @@ async def get_portal(teleport: bool = False) -> Response | dict:
     return {"message": "Here's your inter dimensional portal."}
 
 
-@app.post("/files/")
+@app.post("/files/", tags=[Tags.files])
 async def create_file(
     file: Annotated[bytes, File(description="A file read as bytes")],
     file_b: Annotated[UploadFile, File(description="A file read as upload file")],
@@ -340,7 +364,7 @@ async def create_file(
     }
 
 
-@app.post("/upload-file/")
+@app.post("/upload-file/", tags=[Tags.files])
 async def create_upload_file(
     file: Annotated[UploadFile, File(description="A file read as upload file")],
 ):
@@ -361,6 +385,15 @@ async def read_unicorn(name: Annotated[str, Path(min_length=3)]):
         )
 
     return {"unicorn_name": name}
+
+
+@app.get("/elements", tags=[Tags.items], deprecated=True)
+async def read_elements():
+    """Read items
+
+    Please use [/items/](#items/read_items_items__get) instead.
+    """
+    return [{"item_id": "Foo"}]
 
 
 @app.exception_handler(UnicornException)
