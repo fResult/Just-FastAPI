@@ -334,10 +334,13 @@ async def update_item_json(
         # for item in fake_items_db
     # ]
     foundIndex = fake_items_db.index({"item_name": name})
+    old_data = fake_items_db[foundIndex]
     fake_items_db[foundIndex] = json_compatible_item_data
 
-    print(fake_items_db)
-    return json_compatible_item_data
+    return {
+        "updated_item": fake_items_db[foundIndex],
+        "before_update_data": old_data,
+    }
 
 
 @app.post(
