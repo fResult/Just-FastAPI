@@ -312,6 +312,34 @@ async def update_item(
     return {"updated_item": ItemUpdate(**item_dict)}
 
 
+@app.put("/items/{name}/json/", tags=[Tags.items])
+async def update_item_json(
+    name: Annotated[str, Path()],
+    item: Annotated[
+        dict[str, str],
+        Body(
+            openapi_examples={
+                "normal": {
+                    "summary": "A normal item",
+                    "value": {"item_name": "Qux"},
+                },
+            }
+        ),
+    ],
+):
+    json_compatible_item_data = jsonable_encoder(item)
+    print("json_compatible_item_data", json_compatible_item_data)
+    # new_fake_items_db = [
+        # (json_compatible_item_data if item["item_name"] == name else item)
+        # for item in fake_items_db
+    # ]
+    foundIndex = fake_items_db.index({"item_name": name})
+    fake_items_db[foundIndex] = json_compatible_item_data
+
+    print(fake_items_db)
+    return json_compatible_item_data
+
+
 @app.post(
     "/offers/",
     response_model=OfferCreationResponse,
