@@ -301,6 +301,11 @@ async def update_item(
     if not item:
         return {"updated_item": None}
 
+    item_to_update_encoded = jsonable_encoder(item)
+    found_idx = fake_items_db.index({"item_name": item.name})
+    fake_items_db[found_idx] = item_to_update_encoded
+    print("updated fake items", fake_items_db)
+
     item_dict = item.model_dump()
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
