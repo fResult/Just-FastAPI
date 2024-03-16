@@ -2,5 +2,5 @@ from pydantic import BaseModel, HttpUrl
 
 
 class ImageCreationRequest(BaseModel):
-    name: str
+    name: str | None = None
     url: HttpUrl

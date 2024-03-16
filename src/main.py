@@ -306,7 +306,7 @@ async def update_item(
     fake_items_db[found_idx] = item_to_update_encoded
     print("updated fake items", fake_items_db)
 
-    item_dict = item.model_dump()
+    item_dict = item.model_dump(exclude_unset=True)
 
     price_with_tax = item.price + (item.tax if item.tax else 0)
     item_dict.update({"id": id, "price_with_tax": price_with_tax})
@@ -367,7 +367,7 @@ async def create_offer(offer: OfferCreationRequest):
     status_code=status.HTTP_201_CREATED,
 )
 async def create_multiple_images(images: list[ImageCreationRequest]):
-    print([img.model_dump() for img in images])
+    print([img.model_dump(exclude_unset=True) for img in images])
     return images
 
 
@@ -412,9 +412,9 @@ async def create_upload_file(
 
 @app.get("/unicorns/{name}")
 async def read_unicorn(name: Annotated[str, Path(min_length=3)]):
-    if name == "yolo":
+    if name == "yo lo":
         raise UnicornException(name)
-    if name == "haha":
+    if name == "ha ha":
         raise HTTPException(
             status_code=status.HTTP_418_IM_A_TEAPOT,
             detail=f"Nope! I don't like [{name}]",
