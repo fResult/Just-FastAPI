@@ -21,8 +21,10 @@ click==8.1.7
     # via uvicorn
 dnspython==2.6.1
     # via email-validator
-email-validator==2.1.0.post1
+email-validator==2.1.1
     # via fastapi
+    # via pydantic
+    # via task-mgmt
 fastapi==0.110.0
     # via fastapi
     # via task-mgmt
@@ -59,10 +61,12 @@ orjson==3.9.15
     # via fastapi
 priority==2.0.0
     # via hypercorn
-pydantic==2.6.2
+pydantic==2.6.4
     # via fastapi
+    # via pydantic
     # via pydantic-extra-types
     # via pydantic-settings
+    # via task-mgmt
 pydantic-core==2.16.3
     # via pydantic
 pydantic-extra-types==2.5.0
@@ -74,6 +78,7 @@ python-dotenv==1.0.1
     # via uvicorn
 python-multipart==0.0.9
     # via fastapi
+    # via task-mgmt
 pyyaml==6.0.1
     # via fastapi
     # via uvicorn

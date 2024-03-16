@@ -1,12 +1,34 @@
 {
   "cSpell.words": [
+    "anyio",
+    "certifi",
     "daos",
+    "dnspython",
+    "dotenv",
     "dtos",
     "fastapi",
+    "hpack",
+    "httpcore",
+    "httptools",
+    "httpx",
     "hypercorn",
+    "hyperframe",
+    "idna",
+    "itsdangerous",
     "jsonable",
+    "markupsafe",
+    "mgmt",
+    "orjson",
     "pydantic",
+    "pyyaml",
+    "sniffio",
     "Starlette",
-    "uvicorn"
+    "ujson",
+    "uvicorn",
+    "uvloop",
+    "watchfiles",
+    "websockets",
+    "wsproto",
+    "Zilla"
   ]
 }
