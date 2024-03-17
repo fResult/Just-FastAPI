@@ -1,5 +1,5 @@
 from uuid import UUID
-
+from typing import Annotated
 from pydantic import BaseModel, Field
 
 from src.models.images import Image
@@ -17,7 +17,7 @@ class ItemCreationRequest(BaseModel):
         description="The price must be greater than zero",
         examples=[35.4],
     )
-    tax: float | None = Field(default=None, examples=[3.2])
+    tax: Annotated[float | None, Field(default=None, examples=[3.2])] = None
     tags: set[str] = Field(default=set(), examples=[["Foo", "Zilla"]])
     images: list[Image] | None = Field(
         default=None,
