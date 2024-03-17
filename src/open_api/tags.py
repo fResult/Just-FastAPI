@@ -7,3 +7,4 @@ class Tags(Enum):
     items = "items"
     offers = "offers"
     users = "users"
+    somethings = "somethings"

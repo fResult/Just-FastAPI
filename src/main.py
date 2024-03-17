@@ -15,6 +15,7 @@ from fastapi import (
     Response,
     UploadFile,
     status,
+    Depends,
 )
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
@@ -37,6 +38,7 @@ from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
 from src.open_api.tags import Tags
 from src.services.users_service import fake_save_user
+from src.services.params_extractor_service import common_params
 
 app = FastAPI()
 
@@ -335,8 +337,8 @@ async def update_item_json(
     json_compatible_item_data = jsonable_encoder(item)
     print("json_compatible_item_data", json_compatible_item_data)
     # new_fake_items_db = [
-        # (json_compatible_item_data if item["item_name"] == name else item)
-        # for item in fake_items_db
+    # (json_compatible_item_data if item["item_name"] == name else item)
+    # for item in fake_items_db
     # ]
     foundIndex = fake_items_db.index({"item_name": name})
     old_data = fake_items_db[foundIndex]
@@ -412,8 +414,8 @@ async def create_upload_file(
 
 @app.get("/unicorns/{name}")
 async def read_unicorn(name: Annotated[str, Path(min_length=3)]):
-    if name == "yo lo":
-        raise UnicornException(name)
+    if name == "yolo":
+        raise UnicornException()
     if name == "ha ha":
         raise HTTPException(
             status_code=status.HTTP_418_IM_A_TEAPOT,
@@ -430,6 +432,16 @@ async def read_elements():
     Please use [/items/](#items/read_items_items__get) instead.
     """
     return [{"item_id": "Foo"}]
+
+
+@app.get("/somethings-1", tags=[Tags.somethings])
+async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
+    return commons
+
+
+@app.get("/somethings-2", tags=[Tags.somethings])
+async def read_somethings_2(commons: Annotated[dict, Depends(common_params)]):
+    return commons
 
 
 @app.exception_handler(UnicornException)
