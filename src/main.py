@@ -38,7 +38,11 @@ from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
 from src.open_api.tags import Tags
 from src.services.users_service import fake_save_user
-from src.services.params_extractor_service import common_params, CommonParams
+from src.services.params_extractor_service import (
+    common_params,
+    CommonParams,
+    query_or_cookie_extractor,
+)
 
 app = FastAPI()
 
@@ -434,7 +438,7 @@ async def read_elements():
     return [{"item_id": "Foo"}]
 
 
-@app.get("/somethings-1", tags=[Tags.somethings])
+@app.get("/somethings-1/", tags=[Tags.somethings])
 async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
     response = {}
 
@@ -447,7 +451,7 @@ async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
     return response
 
 
-@app.get("/somethings-2", tags=[Tags.somethings])
+@app.get("/somethings-2/", tags=[Tags.somethings])
 async def read_somethings_2(commons: Annotated[CommonParams, Depends()]):
     response = {}
 
@@ -458,6 +462,13 @@ async def read_somethings_2(commons: Annotated[CommonParams, Depends()]):
     response.update({"items": items})
 
     return response
+
+
+@app.get("/something-3/", tags=[Tags.somethings])
+async def read_something_3(
+    query_or_default: Annotated[str, Depends(query_or_cookie_extractor)],
+):
+    return {"q_or_cookie": query_or_default}
 
 
 @app.exception_handler(UnicornException)
