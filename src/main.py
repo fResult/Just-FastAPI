@@ -448,7 +448,7 @@ async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
 
 
 @app.get("/somethings-2", tags=[Tags.somethings])
-async def read_somethings_2(commons: Annotated[CommonParams, Depends(CommonParams)]):
+async def read_somethings_2(commons: Annotated[CommonParams, Depends()]):
     response = {}
 
     if commons.q:
