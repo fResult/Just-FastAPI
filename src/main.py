@@ -43,6 +43,7 @@ from src.services.params_extractor_service import (
     CommonParams,
     query_or_cookie_extractor,
 )
+from src.services.header_verification_service import verify_token, verify_key
 
 app = FastAPI()
 
@@ -469,6 +470,15 @@ async def read_something_3(
     query_or_default: Annotated[str, Depends(query_or_cookie_extractor)],
 ):
     return {"q_or_cookie": query_or_default}
+
+
+@app.get(
+    "/somethings-4",
+    dependencies=[Depends(verify_token), Depends(verify_key)],
+    tags=[Tags.somethings],
+)
+async def read_something_4():
+    return "My Something 4"
 
 
 @app.exception_handler(UnicornException)
