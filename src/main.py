@@ -38,7 +38,7 @@ from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
 from src.open_api.tags import Tags
 from src.services.users_service import fake_save_user
-from src.services.params_extractor_service import common_params
+from src.services.params_extractor_service import common_params, CommonParams
 
 app = FastAPI()
 
@@ -436,12 +436,28 @@ async def read_elements():
 
 @app.get("/somethings-1", tags=[Tags.somethings])
 async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
-    return commons
+    response = {}
+
+    if commons["q"]:
+        response.update({"q": commons["q"]})
+
+    items = fake_items_db[commons["skip"] : commons["skip"] + commons["limit"]]
+    response.update({"items": items})
+
+    return response
 
 
 @app.get("/somethings-2", tags=[Tags.somethings])
-async def read_somethings_2(commons: Annotated[dict, Depends(common_params)]):
-    return commons
+async def read_somethings_2(commons: Annotated[CommonParams, Depends(CommonParams)]):
+    response = {}
+
+    if commons.q:
+        response.update({"q": commons.q})
+
+    items = fake_items_db[commons.skip : commons.skip + commons.limit]
+    response.update({"items": items})
+
+    return response
 
 
 @app.exception_handler(UnicornException)
