@@ -4,6 +4,7 @@ from uuid import UUID
 from fastapi import (
     Body,
     Cookie,
+    Depends,
     FastAPI,
     File,
     Form,
@@ -15,7 +16,6 @@ from fastapi import (
     Response,
     UploadFile,
     status,
-    Depends,
 )
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
@@ -37,13 +37,13 @@ from src.dtos.users import UserCreation, UserCreationRequest, UserCreationRespon
 from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
 from src.open_api.tags import Tags
-from src.services.users_service import fake_save_user
+from src.services.header_verification_service import verify_key, verify_token
 from src.services.params_extractor_service import (
-    common_params,
     CommonParams,
+    common_params,
     query_or_cookie_extractor,
 )
-from src.services.header_verification_service import verify_token, verify_key
+from src.services.users_service import fake_save_user
 
 app = FastAPI()
 

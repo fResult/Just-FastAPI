@@ -1,0 +1,1060 @@
+[
+    {
+        "label": "annotations",
+        "importPath": "__future__",
+        "description": "__future__",
+        "isExtraImport": true,
+        "detail": "__future__",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "site",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "site",
+        "description": "site",
+        "detail": "site",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UUID",
+        "importPath": "uuid",
+        "description": "uuid",
+        "isExtraImport": true,
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "UserBase",
+        "importPath": "src.models.users",
+        "description": "src.models.users",
+        "isExtraImport": true,
+        "detail": "src.models.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserBase",
+        "importPath": "src.models.users",
+        "description": "src.models.users",
+        "isExtraImport": true,
+        "detail": "src.models.users",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "HttpUrl",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "HttpUrl",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "EmailStr",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Self",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Annotated",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "src.models.images",
+        "description": "src.models.images",
+        "isExtraImport": true,
+        "detail": "src.models.images",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "src.models.images",
+        "description": "src.models.images",
+        "isExtraImport": true,
+        "detail": "src.models.images",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "src.models.items",
+        "description": "src.models.items",
+        "isExtraImport": true,
+        "detail": "src.models.items",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "importPath": "src.models.items",
+        "description": "src.models.items",
+        "isExtraImport": true,
+        "detail": "src.models.items",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Enum",
+        "importPath": "enum",
+        "description": "enum",
+        "isExtraImport": true,
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "Cookie",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Cookie",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Body",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Cookie",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "File",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Header",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UploadFile",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "UserDAO",
+        "importPath": "src.daos.users",
+        "description": "src.daos.users",
+        "isExtraImport": true,
+        "detail": "src.daos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationRequest",
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "isExtraImport": true,
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreation",
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "isExtraImport": true,
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationRequest",
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "isExtraImport": true,
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationResponse",
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "isExtraImport": true,
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "jsonable_encoder",
+        "importPath": "fastapi.encoders",
+        "description": "fastapi.encoders",
+        "isExtraImport": true,
+        "detail": "fastapi.encoders",
+        "documentation": {}
+    },
+    {
+        "label": "RequestValidationError",
+        "importPath": "fastapi.exceptions",
+        "description": "fastapi.exceptions",
+        "isExtraImport": true,
+        "detail": "fastapi.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "PlainTextResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "RedirectResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "starlette.exceptions",
+        "description": "starlette.exceptions",
+        "isExtraImport": true,
+        "detail": "starlette.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "fake_items_db",
+        "importPath": "src.db.fake_db",
+        "description": "src.db.fake_db",
+        "isExtraImport": true,
+        "detail": "src.db.fake_db",
+        "documentation": {}
+    },
+    {
+        "label": "ImageCreationRequest",
+        "importPath": "src.dtos.images",
+        "description": "src.dtos.images",
+        "isExtraImport": true,
+        "detail": "src.dtos.images",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreation",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreationRequest",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreationResponse",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdate",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdateRequest",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdateResponse",
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "isExtraImport": true,
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreation",
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "isExtraImport": true,
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreationRequest",
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "isExtraImport": true,
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreationResponse",
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "isExtraImport": true,
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "UnicornException",
+        "importPath": "src.exceptions.unicorn_exception",
+        "description": "src.exceptions.unicorn_exception",
+        "isExtraImport": true,
+        "detail": "src.exceptions.unicorn_exception",
+        "documentation": {}
+    },
+    {
+        "label": "ModelName",
+        "importPath": "src.models.model_name",
+        "description": "src.models.model_name",
+        "isExtraImport": true,
+        "detail": "src.models.model_name",
+        "documentation": {}
+    },
+    {
+        "label": "Tags",
+        "importPath": "src.open_api.tags",
+        "description": "src.open_api.tags",
+        "isExtraImport": true,
+        "detail": "src.open_api.tags",
+        "documentation": {}
+    },
+    {
+        "label": "verify_key",
+        "importPath": "src.services.header_verification_service",
+        "description": "src.services.header_verification_service",
+        "isExtraImport": true,
+        "detail": "src.services.header_verification_service",
+        "documentation": {}
+    },
+    {
+        "label": "verify_token",
+        "importPath": "src.services.header_verification_service",
+        "description": "src.services.header_verification_service",
+        "isExtraImport": true,
+        "detail": "src.services.header_verification_service",
+        "documentation": {}
+    },
+    {
+        "label": "CommonParams",
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "isExtraImport": true,
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "common_params",
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "isExtraImport": true,
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "query_or_cookie_extractor",
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "isExtraImport": true,
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "fake_save_user",
+        "importPath": "src.services.users_service",
+        "description": "src.services.users_service",
+        "isExtraImport": true,
+        "detail": "src.services.users_service",
+        "documentation": {}
+    },
+    {
+        "label": "bin_dir",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "bin_dir = os.path.dirname(abs_file)\nbase = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"task-mgmt\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "base",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "base = bin_dir[: -len(\"bin\") - 1]  # strip away the bin part from the __file__, plus the path separator\n# prepend bin to PATH (this file is inside the bin directory)\nos.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"task-mgmt\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"PATH\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"PATH\"] = os.pathsep.join([bin_dir, *os.environ.get(\"PATH\", \"\").split(os.pathsep)])\nos.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"task-mgmt\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV\"] = base  # virtual env is right above bin directory\nos.environ[\"VIRTUAL_ENV_PROMPT\"] = \"task-mgmt\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "os.environ[\"VIRTUAL_ENV_PROMPT\"]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "os.environ[\"VIRTUAL_ENV_PROMPT\"] = \"task-mgmt\" or os.path.basename(base)  # noqa: SIM222\n# add the virtual environments libraries to the host python import mechanism\nprev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "prev_length",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "prev_length = len(sys.path)\nfor lib in \"../lib/python3.12/site-packages\".split(os.pathsep):\n    path = os.path.realpath(os.path.join(bin_dir, lib))\n    site.addsitedir(path.decode(\"utf-8\") if \"\" else path)\nsys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.path[:]",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.path[:] = sys.path[prev_length:] + sys.path[0:prev_length]\nsys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.real_prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.real_prefix = sys.prefix\nsys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "sys.prefix",
+        "kind": 5,
+        "importPath": ".venv.bin.activate_this",
+        "description": ".venv.bin.activate_this",
+        "peekOfCode": "sys.prefix = base",
+        "detail": ".venv.bin.activate_this",
+        "documentation": {}
+    },
+    {
+        "label": "UserDAO",
+        "kind": 6,
+        "importPath": "src.daos.users",
+        "description": "src.daos.users",
+        "peekOfCode": "class UserDAO(UserBase):\n    id: UUID\n    hashed_password: str",
+        "detail": "src.daos.users",
+        "documentation": {}
+    },
+    {
+        "label": "fake_items_db",
+        "kind": 5,
+        "importPath": "src.db.fake_db",
+        "description": "src.db.fake_db",
+        "peekOfCode": "fake_items_db = [{\"item_name\": \"Foo\"}, {\"item_name\": \"Bar\"}, {\"item_name\": \"Baz\"}]",
+        "detail": "src.db.fake_db",
+        "documentation": {}
+    },
+    {
+        "label": "ImageCreationRequest",
+        "kind": 6,
+        "importPath": "src.dtos.images",
+        "description": "src.dtos.images",
+        "peekOfCode": "class ImageCreationRequest(BaseModel):\n    name: str | None = None\n    url: HttpUrl",
+        "detail": "src.dtos.images",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreationRequest",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemCreationRequest(BaseModel):\n    name: str = Field(examples=[\"Foo\"])\n    description: str | None = Field(\n        default=None,\n        max_length=300,\n        examples=[\"A very nice item\"],\n    )\n    price: float = Field(\n        gt=0,\n        description=\"The price must be greater than zero\",",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdateRequest",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemUpdateRequest(ItemCreationRequest):\n    pass\nclass ItemCreation(BaseModel):\n    id: UUID\n    name: str\n    description: str | None = None\n    price_with_tax: float\n    tags: set[str] = set()\n    images: list[Image] | None = None\nclass ItemUpdate(ItemCreation):",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreation",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemCreation(BaseModel):\n    id: UUID\n    name: str\n    description: str | None = None\n    price_with_tax: float\n    tags: set[str] = set()\n    images: list[Image] | None = None\nclass ItemUpdate(ItemCreation):\n    q: str | None = None\nclass ItemCreationResponse(BaseModel):",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdate",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemUpdate(ItemCreation):\n    q: str | None = None\nclass ItemCreationResponse(BaseModel):\n    created_item: ItemCreation\nclass ItemUpdateResponse(BaseModel):\n    updated_item: ItemUpdate | None",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemCreationResponse",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemCreationResponse(BaseModel):\n    created_item: ItemCreation\nclass ItemUpdateResponse(BaseModel):\n    updated_item: ItemUpdate | None",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "ItemUpdateResponse",
+        "kind": 6,
+        "importPath": "src.dtos.items",
+        "description": "src.dtos.items",
+        "peekOfCode": "class ItemUpdateResponse(BaseModel):\n    updated_item: ItemUpdate | None",
+        "detail": "src.dtos.items",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreationRequest",
+        "kind": 6,
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "peekOfCode": "class OfferCreationRequest(BaseModel):\n    name: str\n    description: str | None = None\n    price: float\n    items: list[Item]\nclass OfferCreation(BaseModel):\n    id: int\n    name: str\n    description: str | None = None\n    price: float",
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreation",
+        "kind": 6,
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "peekOfCode": "class OfferCreation(BaseModel):\n    id: int\n    name: str\n    description: str | None = None\n    price: float\n    items: list[Item]\nclass OfferCreationResponse(BaseModel):\n    created_offer: OfferCreation",
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "OfferCreationResponse",
+        "kind": 6,
+        "importPath": "src.dtos.offers",
+        "description": "src.dtos.offers",
+        "peekOfCode": "class OfferCreationResponse(BaseModel):\n    created_offer: OfferCreation",
+        "detail": "src.dtos.offers",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationRequest",
+        "kind": 6,
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "peekOfCode": "class UserCreationRequest(UserBase):\n    password: str\nclass UserCreation(UserBase):\n    id: UUID\nclass UserCreationResponse(BaseModel):\n    created_user: UserCreation",
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreation",
+        "kind": 6,
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "peekOfCode": "class UserCreation(UserBase):\n    id: UUID\nclass UserCreationResponse(BaseModel):\n    created_user: UserCreation",
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UserCreationResponse",
+        "kind": 6,
+        "importPath": "src.dtos.users",
+        "description": "src.dtos.users",
+        "peekOfCode": "class UserCreationResponse(BaseModel):\n    created_user: UserCreation",
+        "detail": "src.dtos.users",
+        "documentation": {}
+    },
+    {
+        "label": "UnicornException",
+        "kind": 6,
+        "importPath": "src.exceptions.unicorn_exception",
+        "description": "src.exceptions.unicorn_exception",
+        "peekOfCode": "class UnicornException(Exception):\n    def __init__(self, name: str):\n        self.name = name",
+        "detail": "src.exceptions.unicorn_exception",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "kind": 6,
+        "importPath": "src.models.images",
+        "description": "src.models.images",
+        "peekOfCode": "class Image(BaseModel):\n    name: str\n    url: HttpUrl",
+        "detail": "src.models.images",
+        "documentation": {}
+    },
+    {
+        "label": "Item",
+        "kind": 6,
+        "importPath": "src.models.items",
+        "description": "src.models.items",
+        "peekOfCode": "class Item(BaseModel):\n    id: UUID\n    name: str\n    description: str | None = None\n    price: float\n    tax: float | None = None\n    images: list[Image] | None = None",
+        "detail": "src.models.items",
+        "documentation": {}
+    },
+    {
+        "label": "ModelName",
+        "kind": 6,
+        "importPath": "src.models.model_name",
+        "description": "src.models.model_name",
+        "peekOfCode": "class ModelName(str, Enum):\n    alexnet = \"alexnet\"\n    resnet = \"resnet\"\n    lenet = \"lenet\"",
+        "detail": "src.models.model_name",
+        "documentation": {}
+    },
+    {
+        "label": "Offer",
+        "kind": 6,
+        "importPath": "src.models.offers",
+        "description": "src.models.offers",
+        "peekOfCode": "class Offer(BaseModel):\n    id: int\n    name: str\n    description: str | None = None\n    price: float\n    items: list[Item]",
+        "detail": "src.models.offers",
+        "documentation": {}
+    },
+    {
+        "label": "UserBase",
+        "kind": 6,
+        "importPath": "src.models.users",
+        "description": "src.models.users",
+        "peekOfCode": "class UserBase(BaseModel):\n    username: str\n    password: str\n    email: EmailStr\nclass User(UserBase):\n    id: UUID\n    full_name: str | None = None",
+        "detail": "src.models.users",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "src.models.users",
+        "description": "src.models.users",
+        "peekOfCode": "class User(UserBase):\n    id: UUID\n    full_name: str | None = None",
+        "detail": "src.models.users",
+        "documentation": {}
+    },
+    {
+        "label": "Tags",
+        "kind": 6,
+        "importPath": "src.open_api.tags",
+        "description": "src.open_api.tags",
+        "peekOfCode": "class Tags(Enum):\n    authentications = \"authentications\"\n    files = \"files\"\n    items = \"items\"\n    offers = \"offers\"\n    users = \"users\"\n    somethings = \"somethings\"",
+        "detail": "src.open_api.tags",
+        "documentation": {}
+    },
+    {
+        "label": "CommonParams",
+        "kind": 6,
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "peekOfCode": "class CommonParams:\n    def __init__(\n        self: Self, q: str | None = None, skip: int = 0, limit: int = 0\n    ) -> None:\n        self.q = q\n        self.skip = skip\n        self.limit = limit\ndef query_extractor(q: str | None = None):\n    return q\ndef query_or_cookie_extractor(",
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "common_params",
+        "kind": 2,
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "peekOfCode": "def common_params(q: str | None, skip: int = 0, limit: int = 100):\n    return {\"q\": q, \"skip\": skip, \"limit\": limit}\nclass CommonParams:\n    def __init__(\n        self: Self, q: str | None = None, skip: int = 0, limit: int = 0\n    ) -> None:\n        self.q = q\n        self.skip = skip\n        self.limit = limit\ndef query_extractor(q: str | None = None):",
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "query_extractor",
+        "kind": 2,
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "peekOfCode": "def query_extractor(q: str | None = None):\n    return q\ndef query_or_cookie_extractor(\n    q: Annotated[str, Depends(query_extractor)],\n    last_query: Annotated[str | None, Cookie()] = None,\n):\n    if not q:\n        return last_query\n    return q",
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "query_or_cookie_extractor",
+        "kind": 2,
+        "importPath": "src.services.params_extractor_service",
+        "description": "src.services.params_extractor_service",
+        "peekOfCode": "def query_or_cookie_extractor(\n    q: Annotated[str, Depends(query_extractor)],\n    last_query: Annotated[str | None, Cookie()] = None,\n):\n    if not q:\n        return last_query\n    return q",
+        "detail": "src.services.params_extractor_service",
+        "documentation": {}
+    },
+    {
+        "label": "fake_user_hasher",
+        "kind": 2,
+        "importPath": "src.services.users_service",
+        "description": "src.services.users_service",
+        "peekOfCode": "def fake_user_hasher(raw_password: str) -> str:\n    return \"supersecret\" + raw_password\ndef fake_save_user(user: UserCreationRequest) -> UserDAO:\n    hashed_password = fake_user_hasher(user.password)\n    created_user = UserDAO(\n        id=\"018e0d76-b4df-7c74-a511-47cf55317329\",\n        **user.model_dump(),\n        hashed_password=hashed_password,\n    )\n    print(\"User saved! ... not really\")",
+        "detail": "src.services.users_service",
+        "documentation": {}
+    },
+    {
+        "label": "fake_save_user",
+        "kind": 2,
+        "importPath": "src.services.users_service",
+        "description": "src.services.users_service",
+        "peekOfCode": "def fake_save_user(user: UserCreationRequest) -> UserDAO:\n    hashed_password = fake_user_hasher(user.password)\n    created_user = UserDAO(\n        id=\"018e0d76-b4df-7c74-a511-47cf55317329\",\n        **user.model_dump(),\n        hashed_password=hashed_password,\n    )\n    print(\"User saved! ... not really\")\n    return created_user",
+        "detail": "src.services.users_service",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World!\"}\n@app.get(\"/users/me\", tags=[Tags.users])\nasync def read_my_user():\n    return {\"id\": \"current user\"}\n@app.get(\"/users/{id}\", tags=[Tags.users])\nasync def read_user(id: str):\n    return {\"id\": id}",
+        "detail": "src.main",
+        "documentation": {}
+    }
+]
