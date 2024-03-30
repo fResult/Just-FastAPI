@@ -44,13 +44,21 @@ from src.services.params_extractor_service import (
     query_or_cookie_extractor,
 )
 from src.services.users_service import fake_save_user
+from fastapi.security import OAuth2PasswordBearer
 
 app = FastAPI()
+
+oauth2_scheme = OAuth2PasswordBearer("/users/auth")
 
 
 @app.get("/")
 async def root():
     return {"message": "Hello World!"}
+
+
+@app.get("/token")
+async def read_token(token: Annotated[str, Depends(oauth2_scheme)]):
+    return {"token": token}
 
 
 @app.get("/users/me", tags=[Tags.users])

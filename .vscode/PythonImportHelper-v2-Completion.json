@@ -707,6 +707,14 @@
         "documentation": {}
     },
     {
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
+        "isExtraImport": true,
+        "detail": "fastapi.security",
+        "documentation": {}
+    },
+    {
         "label": "bin_dir",
         "kind": 5,
         "importPath": ".venv.bin.activate_this",
@@ -1053,7 +1061,16 @@
         "kind": 5,
         "importPath": "src.main",
         "description": "src.main",
-        "peekOfCode": "app = FastAPI()\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World!\"}\n@app.get(\"/users/me\", tags=[Tags.users])\nasync def read_my_user():\n    return {\"id\": \"current user\"}\n@app.get(\"/users/{id}\", tags=[Tags.users])\nasync def read_user(id: str):\n    return {\"id\": id}",
+        "peekOfCode": "app = FastAPI()\noauth2_scheme = OAuth2PasswordBearer(\"/users/auth\")\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World!\"}\n@app.get(\"/token\")\nasync def read_token(token: Annotated[str, Depends(oauth2_scheme)]):\n    return {\"token\": token}\n@app.get(\"/users/me\", tags=[Tags.users])\nasync def read_my_user():",
+        "detail": "src.main",
+        "documentation": {}
+    },
+    {
+        "label": "oauth2_scheme",
+        "kind": 5,
+        "importPath": "src.main",
+        "description": "src.main",
+        "peekOfCode": "oauth2_scheme = OAuth2PasswordBearer(\"/users/auth\")\n@app.get(\"/\")\nasync def root():\n    return {\"message\": \"Hello World!\"}\n@app.get(\"/token\")\nasync def read_token(token: Annotated[str, Depends(oauth2_scheme)]):\n    return {\"token\": token}\n@app.get(\"/users/me\", tags=[Tags.users])\nasync def read_my_user():\n    return {\"id\": \"current user\"}",
         "detail": "src.main",
         "documentation": {}
     }
