@@ -20,7 +20,6 @@ from fastapi import (
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
-from fastapi.exceptions import HTTPException as StarletteHTTPException
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -59,6 +58,24 @@ async def root():
 @app.get("/token")
 async def read_token(token: Annotated[str, Depends(oauth2_scheme)]):
     return {"token": token}
+
+
+@app.post("/users/auth", tags=[Tags.users])
+async def login(
+    username: Annotated[str, Form()],
+    password: Annotated[str, Form()],
+):
+    lower_username = username.lower()
+
+    if (lower_username == "fresult" and password == "Sila") or (
+        lower_username == "korn" and password == "Zilla"
+    ):
+        return "Logged in successfully"
+
+    raise HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Username or Password is incorrect",
+    )
 
 
 @app.get("/users/me", tags=[Tags.users])
@@ -499,7 +516,7 @@ async def unicorn_exception_handler(request: Request, exception: UnicornExceptio
     )
 
 
-@app.exception_handler(StarletteHTTPException)
+@app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exception: HTTPException):
     print(f"OMG! An HTTP error!: {repr(exception)}")
 
