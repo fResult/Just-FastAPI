@@ -2,6 +2,7 @@ from typing import Annotated
 from uuid import UUID
 
 from fastapi import (
+    BackgroundTasks,
     Body,
     Cookie,
     Depends,
@@ -504,6 +505,17 @@ async def read_something_3(
 )
 async def read_something_4():
     return "My Something 4"
+
+
+@app.post("/send-notification", tags=[Tags.notifications])
+async def send_notification(email: str, background_tasks: BackgroundTasks):
+    def _write_notification(email: str, message: str = ""):
+        with open("log.txt", mode="w") as email_file:
+            content = f"notification for {email}: {message}"
+            email_file.write(content)
+
+    background_tasks.add_task(_write_notification, email, message="Some Notification")
+    return {"message": "Notification sent in the background"}
 
 
 @app.exception_handler(UnicornException)

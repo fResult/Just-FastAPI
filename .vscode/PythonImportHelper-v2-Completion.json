@@ -347,6 +347,14 @@
         "documentation": {}
     },
     {
+        "label": "BackgroundTasks",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
         "label": "Body",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -990,7 +998,7 @@
         "kind": 6,
         "importPath": "src.open_api.tags",
         "description": "src.open_api.tags",
-        "peekOfCode": "class Tags(Enum):\n    authentications = \"authentications\"\n    files = \"files\"\n    items = \"items\"\n    offers = \"offers\"\n    users = \"users\"\n    somethings = \"somethings\"",
+        "peekOfCode": "class Tags(Enum):\n    authentications = \"authentications\"\n    files = \"files\"\n    items = \"items\"\n    offers = \"offers\"\n    users = \"users\"\n    notifications = \"notifications\"\n    somethings = \"somethings\"",
         "detail": "src.open_api.tags",
         "documentation": {}
     },
