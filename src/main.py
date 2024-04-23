@@ -507,15 +507,35 @@ async def read_something_4():
     return "My Something 4"
 
 
-@app.post("/send-notification", tags=[Tags.notifications])
+@app.post("/send-notification/{email}", tags=[Tags.notifications])
 async def send_notification(email: str, background_tasks: BackgroundTasks):
+    # TODO: Move this function
     def _write_notification(email: str, message: str = ""):
         with open("log.txt", mode="w") as email_file:
-            content = f"notification for {email}: {message}"
+            content = f"notification for {email}: {message}\n"
             email_file.write(content)
 
     background_tasks.add_task(_write_notification, email, message="Some Notification")
     return {"message": "Notification sent in the background"}
+
+# TODO: Move this function
+def _write_log(message: str) -> None:
+    with open("log.txt", mode="a") as log:
+        log.write(message)
+
+# TODO: Move this function
+def _get_query(background_tasks: BackgroundTasks, q: str | None = None):
+    if q:
+        message = f"found query: {q}\n"
+        background_tasks.add_task(_write_log, message)
+
+@app.post("/send-notification-with-dep/{email}", tags=[Tags.notifications])
+async def send_notification_with_dep(email: str, background_tasks: BackgroundTasks, q: Annotated[str, Depends(_get_query)]):
+
+    message = f"message to {email}\n"
+    background_tasks.add_task(_write_log, message)
+
+    return {"message": "Message sent"}
 
 
 @app.exception_handler(UnicornException)
