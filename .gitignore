@@ -6,5 +6,7 @@ dist/
 wheels/
 *.egg-info
 
+.vscode/PythonImportHelper-v2-Completion.json
+
 # venv
 .venv
