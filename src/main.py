@@ -171,7 +171,7 @@ async def read_items(
     ] = None,
 ):
     no_limited = limit == 0
-    results = {"items": fake_items_db}
+    results: dict[str, Any] = {"items": fake_items_db}
 
     results.update(
         {
@@ -233,7 +233,7 @@ async def read_item(
             headers={"X-Error": "There goes my error"},
         )
 
-    item = {"id": id}
+    item: dict[str, Any] = {"id": id}
 
     if q:
         item.update({"q": q})
@@ -486,7 +486,7 @@ async def read_somethings_1(commons: Annotated[dict, Depends(common_params)]):
 
 @app.get("/somethings-2/", tags=[Tags.somethings])
 async def read_somethings_2(commons: Annotated[CommonParams, Depends()]):
-    response = {}
+    response: dict[str, Any] = {}
 
     if commons.q:
         response.update({"q": commons.q})
