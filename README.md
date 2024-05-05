@@ -1,22 +1,36 @@
 # Just Fastapi
+
 FastAPI Learning from the official documentation.
-https://fastapi.tiangolo.com/tutorial
+<https://fastapi.tiangolo.com/tutorial>
 
 ## Prerequisite
-- [Python 3.10+](https://www.python.org/downloads)
+
+- [Python 3.12+](https://www.python.org/downloads)
 - [Rye](https://rye-up.com/) package manager
 
 ## Available Scripts
+
 **Install packages:**
+
 ```bash
 rye sync
 ```
 
-**Run:**
+**Run (development mode):**
+
 ```bash
-rye run hypercorn src.main:app --reload
+rye run fastapi dev src/main.py
 ```
 
+**Run (production mode):**
+
+```bash
+rye run fastapi run src/main.py
+```
+
+
+
 ## API Docs
+
 After running the application...\
-Visit http://localhost:8000/docs
+Visit <http://localhost:8000/docs>

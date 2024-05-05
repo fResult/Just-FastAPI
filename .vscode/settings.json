@@ -32,5 +32,8 @@
     "websockets",
     "wsproto",
     "Zilla"
-  ]
+  ],
+  "mypy.enabled": true,
+  "mypy.runUsingActiveInterpreter": true,
+  "mypy.dmypyExecutable": "${workspaceFolder}/env/bin/python"
 }

@@ -25,6 +25,9 @@ build-backend = "hatchling.build"
 [tool.rye]
 managed = true
 dev-dependencies = [
+    "mypy>=1.10.0",
+    "isort>=5.13.2",
+    "black>=24.4.2",
 ]
 
 [tool.hatch.metadata]
