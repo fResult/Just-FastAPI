@@ -10,7 +10,7 @@ FastAPI Learning from the official documentation.
 
 ## Available Scripts
 
-**Install packages:**
+**Install packages (first time):**
 
 ```bash
 rye sync
