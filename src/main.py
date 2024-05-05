@@ -61,7 +61,7 @@ async def read_token(token: Annotated[str, Depends(oauth2_scheme)]):
     return {"token": token}
 
 
-@app.post("/users/auth", tags=[Tags.users])
+@app.post("/users/auth", tags=[Tags.authentications, Tags.users])
 async def login(
     username: Annotated[str, Form()],
     password: Annotated[str, Form()],
@@ -102,7 +102,7 @@ async def create_user(user: UserCreationRequest) -> UserCreationResponse:
 
 
 @app.post("/login/", tags=[Tags.authentications, Tags.users])
-async def login(username: Annotated[str, Form()], password: Annotated[str, Form()]):
+async def login_test(username: Annotated[str, Form()], password: Annotated[str, Form()]):
     if username == "username" and password == "password":
         return {"username": username}
 

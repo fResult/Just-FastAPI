@@ -6,10 +6,10 @@ authors = [
     { name = "fResult", email = "Styxmaz@gmail.com" }
 ]
 dependencies = [
-    "fastapi[all]>=0.110.0",
+    "fastapi>=0.111.0",
     "hypercorn>=0.16.0",
     "email-validator>=2.1.1",
-    "pydantic[email]>=2.6.3",
+    "pydantic>=2.7.1",
     "python-multipart>=0.0.9",
 ]
 readme = "README.md"
@@ -24,7 +24,8 @@ build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = [
+]
 
 [tool.hatch.metadata]
 allow-direct-references = true
