@@ -102,7 +102,10 @@ async def create_user(user: UserCreationRequest) -> UserCreationResponse:
 
 
 @app.post("/login/", tags=[Tags.authentications, Tags.users])
-async def login_test(username: Annotated[str, Form()], password: Annotated[str, Form()]):
+async def login_test(
+    username: Annotated[str, Form()],
+    password: Annotated[str, Form()],
+):
     if username == "username" and password == "password":
         return {"username": username}
 
@@ -111,7 +114,10 @@ async def login_test(username: Annotated[str, Form()], password: Annotated[str, 
 
 @app.get("users/{user_id}/items/{item_id}", tags=[Tags.users])
 async def read_user_item(
-    user_id: str, item_id: str, q: str | None = None, short: bool = False
+    user_id: str,
+    item_id: str,
+    q: str | None = None,
+    short: bool = False,
 ):
     item = {"id": item_id, "owner_id": user_id}
 
@@ -518,10 +524,12 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
     background_tasks.add_task(_write_notification, email, message="Some Notification")
     return {"message": "Notification sent in the background"}
 
+
 # TODO: Move this function
 def _write_log(message: str) -> None:
     with open("log.txt", mode="a") as log:
         log.write(message)
+
 
 # TODO: Move this function
 def _get_query(background_tasks: BackgroundTasks, q: str | None = None):
@@ -529,8 +537,13 @@ def _get_query(background_tasks: BackgroundTasks, q: str | None = None):
         message = f"found query: {q}\n"
         background_tasks.add_task(_write_log, message)
 
+
 @app.post("/send-notification-with-dep/{email}", tags=[Tags.notifications])
-async def send_notification_with_dep(email: str, background_tasks: BackgroundTasks, q: Annotated[str, Depends(_get_query)]):
+async def send_notification_with_dep(
+    email: str,
+    background_tasks: BackgroundTasks,
+    q: Annotated[str, Depends(_get_query)],
+):
 
     message = f"message to {email}\n"
     background_tasks.add_task(_write_log, message)
