@@ -1,5 +1,6 @@
-from fastapi import Cookie, Depends
 from typing import Annotated, Self
+
+from fastapi import Cookie, Depends
 
 
 def common_params(q: str | None, skip: int = 0, limit: int = 100):

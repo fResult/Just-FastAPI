@@ -1,4 +1,4 @@
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 from fastapi import (
@@ -21,6 +21,7 @@ from fastapi import (
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
+from fastapi.security import OAuth2PasswordBearer
 
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
@@ -44,7 +45,6 @@ from src.services.params_extractor_service import (
     query_or_cookie_extractor,
 )
 from src.services.users_service import fake_save_user
-from fastapi.security import OAuth2PasswordBearer
 
 app = FastAPI()
 

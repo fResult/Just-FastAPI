@@ -1,5 +1,6 @@
-from fastapi import Cookie, Depends, Header, HTTPException, status
 from typing import Annotated
+
+from fastapi import Cookie, Depends, Header, HTTPException, status
 
 
 async def verify_token(x_token: Annotated[str, Header()]):
