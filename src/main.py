@@ -23,6 +23,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse, PlainTextResponse, RedirectResponse
 from fastapi.security import OAuth2PasswordBearer
 
+from checkers.fixed_content_query_checker import FixedContentQueryChecker
 from src.db.fake_db import fake_items_db
 from src.dtos.images import ImageCreationRequest
 from src.dtos.items import (
@@ -523,6 +524,12 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
 
     background_tasks.add_task(_write_notification, email, message="Some Notification")
     return {"message": "Notification sent in the background"}
+
+
+checker = FixedContentQueryChecker("SELECT first_name, last_name FROM persons;")
+@app.get("/query-checker/", tags=[Tags.query_checkers])
+async def read_query_checker(fixed_content_included: Annotated[bool, Depends(checker)]) -> dict[str, bool]:
+    return {"fixed_content_in_query": fixed_content_included}
 
 
 # TODO: Move this function

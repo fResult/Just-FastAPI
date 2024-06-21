@@ -3,9 +3,11 @@ from enum import Enum
 
 class Tags(Enum):
     authentications = "authentications"
+    dependencies = "dependencies"
     files = "files"
     items = "items"
-    offers = "offers"
-    users = "users"
     notifications = "notifications"
+    offers = "offers"
+    query_checkers = "query_checkers"
+    users = "users"
     somethings = "somethings"
