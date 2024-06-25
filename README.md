@@ -19,7 +19,7 @@ rye sync
 **Run (development mode):**
 
 ```bash
-rye run fastapi dev src/main.py
+rye run fastapi dev src
 ```
 
 **Run (production mode):**

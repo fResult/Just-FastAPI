@@ -9,6 +9,8 @@ class UserBase(BaseModel):
     email: EmailStr
 
 
-class User(UserBase):
-    id: UUID
+class User(BaseModel):
+    username: str
+    email: str | None = None
     full_name: str | None = None
+    disabled: bool | None = None

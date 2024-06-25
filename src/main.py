@@ -25,6 +25,7 @@ from fastapi.security import OAuth2PasswordBearer
 
 from checkers.fixed_content_query_checker import FixedContentQueryChecker
 from src.db.fake_db import fake_items_db
+from src.dependencies.user_dependency import get_current_user
 from src.dtos.images import ImageCreationRequest
 from src.dtos.items import (
     ItemCreation,
@@ -38,6 +39,7 @@ from src.dtos.offers import OfferCreation, OfferCreationRequest, OfferCreationRe
 from src.dtos.users import UserCreation, UserCreationRequest, UserCreationResponse
 from src.exceptions.unicorn_exception import UnicornException
 from src.models.model_name import ModelName
+from src.models.users import User
 from src.open_api.tags import Tags
 from src.services.header_verification_service import verify_key, verify_token
 from src.services.params_extractor_service import (
@@ -81,8 +83,8 @@ async def login(
 
 
 @app.get("/users/me", tags=[Tags.users])
-async def read_my_user():
-    return {"id": "current user"}
+async def read_my_user(current_user: Annotated[User, Depends(get_current_user)]):
+    return {"current_user": current_user}
 
 
 @app.get("/users/{id}", tags=[Tags.users])
