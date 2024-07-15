@@ -1,4 +1,4 @@
-from typing import Callable, TypeVar, overload
+from typing import Callable, overload
 from functools import reduce
 
 def identity[T](x: T) -> T:
@@ -6,7 +6,7 @@ def identity[T](x: T) -> T:
 
 
 @overload
-def compose[T, R](f1: Callable[[T], R]) -> Callable[[T], R]:
+def compose[T, R](f: Callable[[T], R]) -> Callable[[T], R]:
     ...
 
 
@@ -74,8 +74,8 @@ def compose[T1, T2, T3, T4, T5, T6, T7, R](
 
 
 def compose(*funcs: Callable) -> Callable:
-    def compose_two(f: Callable, g: Callable) -> Callable:
-        return lambda x: f(g(x))
+    def compose_two(g: Callable, f: Callable) -> Callable:
+        return lambda x: g(f(x))
 
     return reduce(compose_two, funcs, identity)
 
