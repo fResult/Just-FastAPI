@@ -35,5 +35,7 @@
   ],
   "mypy.enabled": true,
   "mypy.runUsingActiveInterpreter": true,
-  "mypy.dmypyExecutable": "${workspaceFolder}/env/bin/python"
+  "mypy.dmypyExecutable": "${workspaceFolder}/env/bin/python",
+  "editor.fontFamily": "MonoLisa, 'JetBrains Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": "'feat', 'ures', 'liga','zero', 'ss07', 'ss05', 'ss11'"
 }
