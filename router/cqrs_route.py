@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Callable
 
 from fastapi import APIRouter, BackgroundTasks
 from pydantic import BaseModel
@@ -54,7 +54,7 @@ def handle_command(
 ) -> dict[str, Any]:
     fake_events_store.append(CommandRecord(**command.model_dump()))
 
-    more_data = type_to_data.setdefault(command.type, []).append
+    more_data: Callable[[dict], None] = type_to_data.setdefault(command.type, []).append
 
     background_tasks.add_task(more_data, command.payload)
 
