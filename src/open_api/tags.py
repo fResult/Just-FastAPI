@@ -3,6 +3,7 @@ from enum import Enum
 
 class Tags(Enum):
     authentications = "authentications"
+    cqrs = "cqrs"
     dependencies = "dependencies"
     files = "files"
     items = "items"

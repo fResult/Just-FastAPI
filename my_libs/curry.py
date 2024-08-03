@@ -73,11 +73,13 @@ def compose[T1, T2, T3, T4, T5, T6, T7, R](
     ...
 
 
-def compose(*funcs: Callable) -> Callable:
-    def compose_two(g: Callable, f: Callable) -> Callable:
+def compose(*funcs: Callable) -> Callable: # type: ignore
+    def compose_two(f: Callable, g: Callable) -> Callable[[object], object]:
         return lambda x: g(f(x))
+    fns = list(funcs).copy()
+    fns.reverse()
 
-    return reduce(compose_two, funcs, identity)
+    return reduce(compose_two, fns, identity)
 
 
 ## Test zone
@@ -106,5 +108,5 @@ twice_only_if_odd = compose(mymap(twice), myfilter(is_odd))
 
 times_4(8)  # 32
 twice_only_if_odd([1, 2, 3, 4, 5, 6, 7, 8, 9])  # [2, 6, 10, 14, 18]
-mymap(compose(sqr, twice))([1, 2, 3, 4, 5, 6, 7, 8, 9]) # [4, 16, 36, 64, 100, 144, 196, 256, 324]
+print(mymap(compose(sqr, twice))([1, 2, 3, 4, 5, 6, 7, 8, 9])) # [4, 16, 36, 64, 100, 144, 196, 256, 324]
 print(times_4(8))
