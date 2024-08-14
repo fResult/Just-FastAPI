@@ -77,9 +77,8 @@ def compose(*funcs: Callable) -> Callable: # type: ignore
     def compose_two(f: Callable, g: Callable) -> Callable[[object], object]:
         return lambda x: g(f(x))
     fns = list(funcs).copy()
-    fns.reverse()
 
-    return reduce(compose_two, fns, identity)
+    return reduce(compose_two, reversed(fns), identity)
 
 
 ## Test zone
